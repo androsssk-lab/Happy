@@ -482,7 +482,21 @@ main{
 }
 @media (max-width: 992px) {
 
+    .hero_image {
+        padding-top: 0px;
+    }
 
+    .why{
+        padding-block: 100px;
+    }
+
+        .why_text {
+            font-size: 35px;
+            line-height: 100%;
+            display: flex;
+                justify-content: center;
+                text-align: center;
+        }
 }
 @media (max-width: 768px) {
     html, body {
