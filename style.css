@@ -122,8 +122,11 @@ main{
 
 .hero_content {
     max-width: 500px;
-    padding-block: 90px;
+    padding-bottom: 90px;
+    padding-top: 4%;
     padding-left: 2%;
+
+    
 }
 
 .hero_container {
@@ -396,10 +399,9 @@ main{
     display: flex;
     max-width: 450px;
     flex-direction: column;
-    padding-top: 100px;
-    padding-block: 90px;
     text-align: center;
     align-items: center;
+    gap: 20px;
 }
 
 .about_title{
@@ -421,7 +423,6 @@ main{
     letter-spacing: 0%;
     line-height: 140.4%;
     color: var(--gray2);
-    margin-top: 30px;
     padding-left: 5%;
 }
 
@@ -446,9 +447,41 @@ main{
 }
 
 @media (max-width: 1200px) {
+            .hero_container {
+        flex-direction: flex;
+        padding-left: 0;
+        padding-right: 0;
+        gap: 20px;
+        overflow: visible;
+        max-width: 100%;
+    }
     
+    .hero_image {
+        padding-top: 5%;
+        flex: none;
+        width: 50%;
+
+    }
+    
+    .hero_content {
+        max-width: 100%;
+        padding-inline: 20px;
+        width: 100%;
+        padding-block: 60px;
+
+
+    }
+
+    .hero_title {
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .hero_desc {
+        font-size: 16px;
 }
 @media (max-width: 992px) {
+
 
 }
 @media (max-width: 768px) {
@@ -468,9 +501,10 @@ main{
     }
     
     .hero_image {
-        max-width: 100%;
+        padding-top: 50px;
         flex: none;
         width: 100%;
+        order: -1;
     }
     
     .hero_content {
@@ -478,10 +512,12 @@ main{
         padding-inline: 20px;
         width: 100%;
         padding-block: 60px;
+        order:1;
+        padding-top: 0px;
     }
     
     .hero_title {
-        font-size: 30px;
+        font-size: 45px;
         line-height: 35px;
     }
     
@@ -502,6 +538,7 @@ main{
     }
 
     .galery_grid {
+        padding-inline: 5%;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 120px;
     }
@@ -529,6 +566,10 @@ main{
             max-width: 100%;
             height: auto;
         }
+
+    .about_content{
+        padding-top: 10%;
+    }
 }
 @media (max-width: 480px) {
     .hero_title {
