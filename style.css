@@ -447,7 +447,7 @@ main{
 }
 
 @media (max-width: 1200px) {
-            .hero_container {
+    .hero_container {
         flex-direction: flex;
         padding-left: 0;
         padding-right: 0;
@@ -575,13 +575,24 @@ main{
     .hero_title {
         font-size: 30px;
         line-height: 28px;
+        letter-spacing: 2%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
     }
     
     .hero_desc {
+        display: flex;
+        justify-content: center;
+        text-align: center;
         font-size: 18px;
     }
     
     .hero_container {
+
+    }
+
+    .hero_content{
         padding-left: 15px;
         padding-right: 15px;
     }
