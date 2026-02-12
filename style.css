@@ -93,6 +93,8 @@ ul {
 
 .header_list-link:hover{
     color: var(--purple);
+    border-bottom: 2px solid var(--gray);
+    padding-bottom: 5px;
 }
 
 a{
@@ -696,8 +698,8 @@ main{
         position: fixed;
         top: 70px;
         right: 0;
-        width: 30%;
-        padding: 20px;
+        width: 100%;
+        padding-bottom: 10px;
         z-index: 999;
 
         background: rgba(255, 255, 255, 0.15);
@@ -722,8 +724,9 @@ main{
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
+        
     }
-    
+
     .burger_list-item{
         color: var(--gray);
     }
@@ -731,9 +734,23 @@ main{
     .burger_list-items {
         display: flex;
         justify-content: center;
+        transition: color 0.3s;
     }
 
+    .burger_list-items:hover,
+    .burger_list-items:active {
+        color: var(--purple);
+        border-bottom: 2px solid var(--gray);
+        padding-bottom: 5px;
+    }
 
+    .burger_menu-list{
+        display: flex;
+        flex-direction: space-between;
+        gap: 5%;
+        align-items: center;
+        justify-content: center;
+    }
 
     .hero_title {
         font-size: 30px;
