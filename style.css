@@ -7,6 +7,7 @@
 
 html {
     scroll-behavior: smooth;
+    
 }
 
 *{
@@ -633,10 +634,17 @@ main{
 }
 @media (max-width: 480px) {
     
+    .header{
+        height: 70px;
+        display: flex;
+        align-items: center;
+    }
+    
     .header_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     }
 
 
@@ -676,6 +684,11 @@ main{
     .лапка{
         width: 30px;
         height: 30px;
+    }
+
+    .name_logo{
+        width: 180px;
+        height: auto;
     }
 
     .burger_menu{
