@@ -48,6 +48,18 @@ body{
     margin-inline: auto;
 }
 
+.burger {
+    display: none;
+}
+
+.burger_menu {
+    display: none;
+}
+
+.burger_container{
+    display: none;
+}
+
 .header_nav {
     display: flex;
     justify-content: space-between;
@@ -472,14 +484,48 @@ main{
 
     }
 
+
     .hero_title {
-        font-size: 30px;
-        line-height: 30px;
+        font-size: 50px;
+        line-height: 100%;
     }
 
     .hero_desc {
-        font-size: 16px;
-}
+        font-size: 25px;
+    }
+
+    .hero_buttons {
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .galery_grid {
+        padding-inline: 3%;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 140px;
+    }
+
+    .about_container{
+        gap: 0px;}
+
+    .about_content{
+        max-width: 600px;
+    }
+
+    .about_title{
+        font-size: 30px;
+        line-height: 100%;
+    }
+
+     .about_desc{
+        font-size: 15px;
+    }
+
+    .about_image{
+        right: 0px;
+        width: 50%;
+        justify-content: space-between;
+    }
 @media (max-width: 992px) {
 
     .hero_image {
@@ -586,6 +632,68 @@ main{
     }
 }
 @media (max-width: 480px) {
+    
+    .header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+
+    .header_nav{
+        display: none;
+    }
+
+    .burger{
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .burger_container{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding-inline: 5%;
+    }
+
+    .burger_logo {
+        width: 50px;
+        height: auto;
+    }
+
+    .burger span {
+        width: 24px;
+        height: 2px;
+        background: #000;
+        display: block;
+    }
+
+    .лапка{
+        width: 30px;
+        height: 30px;
+    }
+
+    .burger_menu{
+        display: column;
+
+    }
+    
+    .burger_menu.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+    }
+
     .hero_title {
         font-size: 30px;
         line-height: 28px;
@@ -613,7 +721,7 @@ main{
     
     .hero_buttons {
         flex-direction: column;
-        gap: 15px;
+        gap: 35px;
     }
     
     .why_text {
@@ -623,6 +731,9 @@ main{
             justify-content: center;
             text-align: center;
     }
+
+    .catalog_categories{
+        padding-inline: 7px;}
 
     .galery_grid {
         grid-template-columns: repeat(2, 1fr);
