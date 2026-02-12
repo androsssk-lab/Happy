@@ -7,7 +7,7 @@
 
 html {
     scroll-behavior: smooth;
-    
+
 }
 
 *{
@@ -37,7 +37,7 @@ body{
     padding-block: 13px;  
     position: fixed; 
     width: 100%;
-    z-index: 999;
+    z-index: 1000;
     background: rgba(255, 255, 255, 0.153);
     backdrop-filter: blur(10px);
      -webkit-backdrop-filter: blur(10px);
@@ -691,21 +691,49 @@ main{
         height: auto;
     }
 
-    .burger_menu{
-        display: column;
 
-    }
-    
-    .burger_menu.active {
+    .burger_menu {
+        position: fixed;
+        top: 70px;
+        right: 0;
+        width: 30%;
+        padding: 20px;
+        z-index: 999;
+
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 0 0 24px 24px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
         display: flex;
         flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 20px;
+
+        opacity: 0;
+        transform: translateY(-70px) scale(0.95);
+        pointer-events: none;
+
+        transition:
+            opacity 0.35s ease,
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
+
+    .burger_menu.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+    
+    .burger_list-item{
+        color: var(--gray);
+    }
+
+    .burger_list-items {
+        display: flex;
+        justify-content: center;
+    }
+
+
 
     .hero_title {
         font-size: 30px;
