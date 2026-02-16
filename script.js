@@ -2,6 +2,7 @@ const burger = document.querySelector('.burger');
 const burger_menu = document.querySelector('.burger_menu');
 const burger_items = document.querySelectorAll('.burger_list-items');
 
+
 burger.addEventListener('click', () => {
     burger_menu.classList.toggle('active');
 });
