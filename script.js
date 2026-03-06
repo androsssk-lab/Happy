@@ -1,130 +1,94 @@
-const words = ["Web-Developer.", "Designer."];
-let wordIndex = 0;
-let letterIndex = 0;
-let currentWord = "";
-let isDeleting = false;
+const burger = document.querySelector('.burger');
+const burger_menu = document.querySelector('.burger_menu');
+const burger_items = document.querySelectorAll('.burger_list-items');
 
-const typingElement = document.getElementById("typing");
 
-function type() {
-  currentWord = words[wordIndex];
+burger.addEventListener('click', () => {
+    burger_menu.classList.toggle('active');
+});
 
-  if (isDeleting) {
-    typingElement.textContent = currentWord.substring(0, letterIndex--);
-  } else {
-    typingElement.textContent = currentWord.substring(0, letterIndex++);
-  }
+burger_items.forEach(item => {
+    item.addEventListener('click', () => {
+        burger_menu.classList.remove('active');
+    });
+});
 
-  if (!isDeleting && letterIndex === currentWord.length + 1) {
-    isDeleting = true;
-    setTimeout(type, 1000);
-    return;
-  }
+const cartBtns = document.querySelectorAll('.cart1, .cart');
+const cartMenu = document.querySelector('.cart_menu');
 
-  if (isDeleting && letterIndex === 0) {
-    isDeleting = false;
-    wordIndex = (wordIndex + 1) % words.length;
-  }
-
-  setTimeout(type, isDeleting ? 50 : 100);
-}
-
-type();
-
-// Обработчик для кнопки "Weiter"
-const weiterBtn = document.getElementById("weiter-btn");
-if (weiterBtn) {
-  weiterBtn.addEventListener("click", function() {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-  });
-}
-
-const tabs = document.querySelectorAll(".tab");
-const blocks = document.querySelectorAll(".icons");
-
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-
-    tabs.forEach(t => t.classList.remove("active"));
-    blocks.forEach(b => b.classList.remove("active"));
-
-    tab.classList.add("active");
-    document.getElementById(tab.dataset.tab).classList.add("active");
-  });
+cartBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        cartMenu.classList.toggle('active');
+    });
 });
 
 
-const aboutSection = document.querySelector(".about");
+const addButtons = document.querySelectorAll('.add_to_cart');
+const cartItems = document.querySelector('.cart_items');
+const cartTotal = document.querySelector('.cart_total');
+const emptyText = document.querySelector('.cart_desc');
+
+let total = 0;
+
+addButtons.forEach(button => {
+
+    button.addEventListener('click', function () {
+
+        const originalText = this.textContent;
+
+        this.textContent = "Добавлено";
+        this.classList.add("success");
+
+        setTimeout(() => {
+            this.textContent = originalText;
+            this.classList.remove("success");
+        }, 800);
 
 
-aboutSection.addEventListener("mousemove", (e) => {
-  const rect = aboutSection.getBoundingClientRect();
+    button.addEventListener('click', () => {
 
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+        const name = button.dataset.name;
+        const price = Number(button.dataset.price);
 
-  const moveX = (x - rect.width / 2) / 10;
-  const moveY = (y - rect.height / 2) / 10;
+        // создаём элемент товара
+        const item = document.createElement('div');
+            item.classList.add('cart_item');
 
-  aboutSection.style.setProperty(
-    "--move",
-    `translate(${moveX}px, ${moveY}px)`
-  );
-});
-
+            item.innerHTML = `
+                <span>${name} — ${price} грн</span>
+                <button class="remove_item">✕</button>
+            `;
 
 
-const sprachenBlock = document.getElementById("sprachen");
+        cartItems.appendChild(item);
 
-document.querySelector('[data-tab="sprachen"]')
-  ?.addEventListener("click", () => {
+        const removeBtn = item.querySelector('.remove_item');
 
-    const bars = sprachenBlock.querySelectorAll(".progress");
+        removeBtn.addEventListener('click', () => {
 
-    bars.forEach(bar => {
-      const width = bar.getAttribute("data-width");
-      setTimeout(() => {
-        bar.style.width = width;
-      }, 200);
+            total -= price;
+            cartTotal.textContent = `Итого: ${total} грн`;
+
+            item.remove();
+
+            // если корзина пустая
+            if (cartItems.children.length === 0) {
+            emptyText.style.display = "block";
+                }
+
+        });
+
+        
+        // обновляем сумму
+        total += price;
+        cartTotal.textContent = `Итого: ${total} грн`;
+
+        // скрываем текст "пусто"
+        if (emptyText) {
+            emptyText.style.display = "none";
+        }
     });
 
 });
 
-
-document.querySelectorAll(".flip-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    btn.closest(".projekt_card").classList.toggle("flipped");
-  });
 });
-
-const aboutContainer = document.querySelector(".about_container")
-
-const observer = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.classList.add("show")
-}
-})
-
-},{ threshold:0.3 })
-
-observer.observe(aboutContainer)
-
-const projectsContainer = document.querySelector(".projekte_container")
-
-const projectsObserver = new IntersectionObserver(entries => {
-
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show")
-projectsObserver.unobserve(entry.target)
-}
-})
-
-},{threshold:0.3})
-
-projectsObserver.observe(projectsContainer)
